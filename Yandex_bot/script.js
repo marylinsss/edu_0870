@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Bot for yandex
+// @name         Yandex bot
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
@@ -10,7 +10,8 @@
 // @grant        none
 // ==/UserScript==
 
-let sites = { //все сайты и их ключевые слова, по которым ведется поиск
+//все сайты и их ключевые слова, по которым ведется поиск
+let sites = {
     "xn----7sbab5aqcbiddtdj1e1g.xn--p1ai":['Гобой','Как звучит флейта', 'Кларнет','Саксофон','Тромбон','Валторна'],
     "crushdrummers.ru":['Барабанное шоу','Заказать барабанное шоу','Шоу барабанщиков в Москве']
 };
@@ -43,15 +44,14 @@ if (btnK != undefined){
 }else if(location.hostname == site){
     setInterval(()=>{
         let index = getRandom(0,links.length);
-        if (getRandom(0,101)>=80){
+        if (getRandom(0,101)>=80)
             location.href = 'https://yandex.ru/';
-        }
-        else if (links[index].href.indexOf(site) != -1){
-            links[index].click();}
+        else if (links[index].href.indexOf(site) != -1)
+            links[index].click();
     },getRandom(3000,7000));
 }else{
     let nextYpage = true;
-    for (let i=0; i<links.length; i++){
+    for(let i=0; i<links.length; i++){
         if(links[i].href.indexOf(site) != -1){
             let link = links[i];
             nextYpage = false;
